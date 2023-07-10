@@ -203,9 +203,13 @@ const drawer = useDrawer()
         v-if="user"
     >
       <v-list>
-        <v-list-item
+        <!-- TODO: remove email -->
+        <!-- <v-list-item
             :title="user.username"
             :subtitle="user.email"
+        > -->
+        <v-list-item
+            :title="user.username"
         >
           <template v-slot:prepend>
             <v-icon

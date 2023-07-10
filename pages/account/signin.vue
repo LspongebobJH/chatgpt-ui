@@ -43,11 +43,19 @@
               <div
                 class="mt-5 d-flex justify-space-between"
               >
-                <v-btn
-                    @click="navigateTo('/account/signup')"
-                    variant="text"
-                    color="primary"
-                >{{$t('createAccount')}}</v-btn>
+                <div class="mt-5 d-flex justify-start flex-column">
+                  <v-btn
+                      @click="navigateTo('/account/signup')"
+                      variant="text"
+                      color="primary"
+                  >{{$t('createAccount')}}</v-btn>
+                
+                  <v-btn
+                      @click="navigateTo('/account/resetPassword?reason=forgetPassword')"
+                      variant="text"
+                      color="primary"
+                  >{{$t('forgetPassword')}}</v-btn>
+                </div>
 
                 <v-btn
                     color="primary"
@@ -105,10 +113,17 @@ const submit = async () => {
         if (error.value.data.non_field_errors) {
           errorMsg.value = error.value.data.non_field_errors[0]
         }
-      } else {
-        errorMsg.value = 'Something went wrong. Please try again.'
+      } 
+      else {
+        if (error.value.data.detail) {
+          errorMsg.value = $i18n.t(error.value.data.detail)
+        } 
+        else {
+          errorMsg.value = $i18n.t('Something went wrong. Please try again.')
+        }
       }
-    } else {
+    } 
+    else {
       setUser(data.value.user)
       const callback = route.query.callback ? decodeURIComponent(route.query.callback) : '/'
       await navigateTo(callback)

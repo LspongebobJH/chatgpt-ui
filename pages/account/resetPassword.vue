@@ -1,13 +1,20 @@
 <script setup>
 definePageMeta({
-  middleware: ["auth"]
+  // middleware: ["auth"]
+  layout: 'vuetify-app',
 })
+const { $i18n } = useNuxtApp()
 const formData = ref({
+  username: '',
   old_password: '',
   new_password1: '',
-  new_password2: ''
+  new_password2: '',
+  code: ''
 })
 const formRules = ref({
+  username: [
+    v => !!v || 'User name is required'
+  ],
   old_password: [
     v => !!v || 'Current password is required'
   ],
@@ -17,12 +24,17 @@ const formRules = ref({
   new_password2: [
     v => !!v || 'Confirm password is required',
     v => v === formData.value.new_password1 || 'Passwords do not match'
-  ]
+  ],
+  code: [
+    v => !!v || 'Verification code is required',
+  ],
 })
 const fieldErrors = ref({
+  username: '',
   old_password: '',
   new_password1: '',
   new_password2: '',
+  code: '',
 })
 const errorMsg = ref(null)
 const resetForm = ref(null)
@@ -62,9 +74,9 @@ const submit = async () => {
         }
       } else {
         if (error.value.data.detail) {
-          errorMsg.value = error.value.data.detail
+          errorMsg.value = $i18n.t(error.value.data.detail)
         } else {
-          errorMsg.value = 'Something went wrong. Please try again.'
+          errorMsg.value = $i18n.t('Something went wrong. Please try again.')
         }
       }
     } else {
@@ -100,15 +112,28 @@ const successDialog = ref(false)
             <div class="text-center text-h4">{{ $t('resetPassword') }}</div>
             <v-card-text>
               <v-form ref="resetForm">
-                <v-text-field
-                    v-model="formData.old_password"
-                    :rules="formRules.old_password"
-                    :error-messages="fieldErrors.old_password"
-                    @update:modelValue="handleFieldUpdate('old_password')"
-                    :label="$t('currentPassword')"
-                    variant="underlined"
-                    clearable
-                ></v-text-field>
+                <div v-if="route.query.reason || route.query.reason === 'forgetPassword'">
+                  <v-text-field
+                      v-model="formData.username"
+                      :rules="formRules.username"
+                      :error-messages="fieldErrors.username"
+                      @update:modelValue="handleFieldUpdate('username')"
+                      :label="$t('username')"
+                      variant="underlined"
+                      clearable
+                  ></v-text-field>
+                </div>
+                <div v-if="!route.query.reason || route.query.reason !== 'forgetPassword'">
+                  <v-text-field
+                      v-model="formData.old_password"
+                      :rules="formRules.old_password"
+                      :error-messages="fieldErrors.old_password"
+                      @update:modelValue="handleFieldUpdate('old_password')"
+                      :label="$t('currentPassword')"
+                      variant="underlined"
+                      clearable
+                  ></v-text-field>
+                </div>
                 <v-text-field
                     v-model="formData.new_password1"
                     :rules="formRules.new_password1"
@@ -124,6 +149,15 @@ const successDialog = ref(false)
                     :error-messages="fieldErrors.new_password2"
                     @update:modelValue="handleFieldUpdate('new_password2')"
                     :label="$t('confirmPassword')"
+                    variant="underlined"
+                    clearable
+                ></v-text-field>
+                <v-text-field
+                    v-model="formData.code"
+                    :rules="formRules.code"
+                    :error-messages="fieldErrors.code"
+                    @update:modelValue="handleFieldUpdate('code')"
+                    :label="$t('verifyCode')"
                     variant="underlined"
                     clearable
                 ></v-text-field>

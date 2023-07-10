@@ -6,7 +6,7 @@ definePageMeta({
 
 const formData = ref({
   username: '',
-  email: '',
+  // email: '', TODO: remove email
   password1: '',
   password2: '',
   code:'',
@@ -14,7 +14,7 @@ const formData = ref({
 
 const fieldErrors = ref({
   username: '',
-  email: '',
+  // email: '', TODO: remove email
   password1: '',
   password2: '',
   code:'',
@@ -74,7 +74,7 @@ const submit = async () => {
         if (error.value.data.detail) {
           errorMsg.value = $i18n.t(error.value.data.detail)
         } else {
-          errorMsg.value = 'Something went wrong. Please try again.'
+          errorMsg.value = $i18n.t('Something went wrong. Please try again.')
         }
       }
     } else {
@@ -120,7 +120,7 @@ const handleFieldUpdate = (field) => {
                     clearable
                 ></v-text-field>
 
-                <v-text-field
+                <!-- <v-text-field
                     v-model="formData.email"
                     :rules="formRules.email"
                     :error-messages="fieldErrors.email"
@@ -128,7 +128,7 @@ const handleFieldUpdate = (field) => {
                     variant="underlined"
                     @update:modelValue="handleFieldUpdate('email')"
                     clearable
-                ></v-text-field>
+                ></v-text-field> -->
 
                 <v-text-field
                     v-model="formData.password1"
@@ -150,14 +150,14 @@ const handleFieldUpdate = (field) => {
                     clearable
                 ></v-text-field>
 
-<!--                <v-text-field-->
-<!--                    v-model="formData.code"-->
-<!--                    :rules="formRules.code"-->
-<!--                    :label="$t('invitation code')"-->
-<!--                    variant="underlined"-->
-<!--                    @keyup.enter="submit"-->
-<!--                    clearable-->
-<!--                ></v-text-field>-->
+              <v-text-field
+                   v-model="formData.code"
+                   :rules="formRules.code"
+                   :label="$t('invitation code')"
+                   variant="underlined"
+                   @keyup.enter="submit"
+                   clearable
+              ></v-text-field>
 
               </v-form>
 
