@@ -3,6 +3,7 @@ const appName = process.env.NUXT_PUBLIC_APP_NAME ?? 'ChatGPT UI'
 export default defineNuxtConfig({
     debug: process.env.NODE_ENV !== 'production',
     ssr: process.env.SSR !== 'false',
+    sourcemap: true,
     app: {
         head: {
             title: appName,
@@ -17,6 +18,7 @@ export default defineNuxtConfig({
         }
     },
     build: {
+        // transpile: process.env.NODE_ENV === "development" ? [] : ['vuetify'],
         transpile: ['vuetify']
     },
     css: [
