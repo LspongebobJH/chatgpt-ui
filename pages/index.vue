@@ -61,6 +61,16 @@ onActivated(async () => {
 
 </script>
 
+<style scoped>
+.background {
+  background-image: url("/logo-no-background.svg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 80% 80%;
+}
+</style>
+
 <template>
   <v-app-bar>
     <v-app-bar-nav-icon @click="drawer = !drawer"></v-app-bar-nav-icon>
@@ -85,8 +95,9 @@ onActivated(async () => {
 
   </v-app-bar>
 
-  <v-main>
-    <Welcome v-if="!route.params.id && conversation.messages.length === 0" />
+  <v-main
+  class="background">
+    
     <Conversation :conversation="conversation" />
   </v-main>
 </template>
