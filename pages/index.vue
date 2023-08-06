@@ -67,7 +67,17 @@ onActivated(async () => {
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 80% 80%;
+  background-size: contain;
+}
+
+.navBackground {
+  background-image: url("/logo-no-background.svg");
+  background-attachment: fixed;
+  background-position: 75% 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  /* background-size: 50% 50%; */
 }
 </style>
 
@@ -86,7 +96,7 @@ onActivated(async () => {
 
   </v-app-bar>
 
-  <v-main class="background">
+  <v-main :class="drawer ? 'navBackground' : 'background'">
     <Conversation :conversation="conversation" />
   </v-main>
 </template>
