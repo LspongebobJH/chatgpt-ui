@@ -79,25 +79,14 @@ onActivated(async () => {
 
     <v-spacer></v-spacer>
 
-    <v-btn
-        :title="$t('newConversation')"
-        icon="add"
-        @click="createNewConversation"
-        class="d-md-none ma-3"
-    ></v-btn>
-    <v-btn
-        variant="outlined"
-        class="text-none d-none d-md-block"
-        @click="createNewConversation"
-    >
+    <v-btn :title="$t('newConversation')" icon="add" @click="createNewConversation" class="d-md-none ma-3"></v-btn>
+    <v-btn variant="outlined" class="text-none d-none d-md-block" @click="createNewConversation">
       {{ $t('newConversation') }}
     </v-btn>
 
   </v-app-bar>
 
-  <v-main
-  class="background">
-    
+  <v-main class="background">
     <Conversation :conversation="conversation" />
   </v-main>
 </template>
