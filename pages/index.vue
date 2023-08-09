@@ -67,7 +67,8 @@ onActivated(async () => {
   background-attachment: fixed;
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 50% 50%;
+  /* background-size: contain; */
 }
 
 .navBackground {
@@ -75,7 +76,8 @@ onActivated(async () => {
   background-attachment: fixed;
   background-position: 75% 50%;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 50% 50%;
+  /* background-size: contain; */
 
   /* background-size: 50% 50%; */
 }
