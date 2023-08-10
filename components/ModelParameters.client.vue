@@ -83,9 +83,9 @@ onNuxtReady(() => {
         >
           <v-col cols="12">
             <div class="d-flex justify-space-between align-center">
-              <v-list-subheader>{{ $t('maxTokens') }}</v-list-subheader>
+              <v-list-subheader>{{ $t('maxResponseTokens') }}</v-list-subheader>
               <v-text-field
-                  v-model.number="currentModel.max_tokens"
+                  v-model.number="currentModel.max_response_tokens"
                   hide-details
                   single-line
                   density="compact"
@@ -102,7 +102,7 @@ onNuxtReady(() => {
           </v-col>
           <v-col cols="12">
             <v-slider
-                v-model="currentModel.max_tokens"
+                v-model="currentModel.max_response_tokens"
                 :max="currentModelDefault.total_tokens"
                 :step="1"
                 hide-details
