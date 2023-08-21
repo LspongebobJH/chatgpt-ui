@@ -29,7 +29,7 @@ export default defineNuxtConfig({
     modules: [
         '@kevinmarrec/nuxt-pwa',
         '@nuxtjs/color-mode',
-        '@nuxtjs/i18n'
+        '@nuxtjs/i18n',
     ],
     pwa: {
         manifest: {
@@ -81,5 +81,15 @@ export default defineNuxtConfig({
         vueI18n: {
             fallbackLocale: 'en',
         },
-    }
+    },
+    components: [
+        {
+            path: '~/components',
+            extensions: ['.vue'],
+        },
+        {
+            path: '~/components/article',
+            extensions: ['.vue'],
+        }
+    ]
 })

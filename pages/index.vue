@@ -78,7 +78,6 @@ onActivated(async () => {
   background-repeat: no-repeat;
   background-size: 50% 50%;
   /* background-size: contain; */
-
   /* background-size: 50% 50%; */
 }
 </style>
