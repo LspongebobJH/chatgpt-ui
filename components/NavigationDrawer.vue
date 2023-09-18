@@ -425,16 +425,12 @@ const drawer = useDrawer()
       
                 <SettingsLanguages/>
       
-                <!-- <v-list-item
+                <v-list-item
                     rounded="xl"
                     prepend-icon="help_outline"
                     :title="$t('feedback')"
                     @click="feedback"
-                ></v-list-item> -->
-
-              </v-list>
-            </div>
-          </v-expansion-panel-text>
+                ></v-list-item>
         </v-expansion-panel>
       </v-expansion-panels>
     </template>

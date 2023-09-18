@@ -81,5 +81,15 @@ export default defineNuxtConfig({
         vueI18n: {
             fallbackLocale: 'en',
         },
-    }
+    },
+    components: [
+        {
+            path: '~/components',
+            extensions: ['.vue'],
+        },
+        {
+            path: '~/components/article',
+            extensions: ['.vue'],
+        }
+    ]
 })
