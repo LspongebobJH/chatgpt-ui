@@ -47,7 +47,7 @@
   "topP": "Top P",
   "frequencyPenalty": "Frequency Penalty",
   "presencePenalty": "Presence Penalty",
-  "maxResponseTokens": "Max Response Tokens",
+  "maxTokens": "Max Tokens",
   "roles": {
     "me": "Me",
     "ai": "AI"

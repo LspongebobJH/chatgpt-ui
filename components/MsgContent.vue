@@ -89,7 +89,8 @@ onMounted(() => {
 
 <style>
 .chat-msg-content {
-  font-size: 0.875rem !important;
+  font-size: 1.2rem !important;
+  background-color: #59B269;
   font-weight: 400;
   line-height: 1.25rem;
 }
