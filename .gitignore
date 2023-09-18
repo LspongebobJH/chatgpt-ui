@@ -12,3 +12,4 @@ dist
 tests
 key
 ._.DS_Store
+.vscode
